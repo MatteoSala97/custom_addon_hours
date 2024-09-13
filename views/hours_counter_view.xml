@@ -1,0 +1,49 @@
+<odoo>
+    <!-- Vista Elenco (Tree View) -->
+     <!-- Questa vista serve ad avere i dati in struttura tabellare-->
+    <record id="view_hours_counter_tree" model="ir.ui.view">
+        <field name="name">hours.counter.tree</field>
+        <field name="model">hours.counter</field>
+        <field name="arch" type="xml">
+            <tree string="Hours Counter">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="start_time"/>
+                <field name="end_time"/>
+                <field name="afterhours"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista Form -->
+     <!-- Questa vista permette agli utenti di visualizzare i dati in vista form, così da poterli modificare -->
+    <record id="view_hours_counter_form" model="ir.ui.view">
+        <field name="name">hours.counter.form</field>
+        <field name="model">hours.counter</field>
+        <field name="arch" type="xml">
+            <form string="Hours Counter">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="start_time"/>
+                        <field name="end_time"/>
+                        <field name="afterhours"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Azione -->
+    <record id="action_hours_counter" model="ir.actions.act_window">
+        <field name="name">Hours Counter</field>
+        <field name="res_model">hours.counter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_hours_counter_tree"/>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_hours_counter_root" name="Hours Counter"/>
+    <menuitem id="menu_hours_counter" name="Hours Counter" parent="menu_hours_counter_root" action="action_hours_counter"/>
+</odoo>
